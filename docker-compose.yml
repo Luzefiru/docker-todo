@@ -1,4 +1,14 @@
 services:
+  client:
+    image: docker-todo-client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    environment:
+      - NEXT_PUBLIC_TODOS_BASE_URL="http://server:3001/todos"
+
   server:
     image: docker-todo-server
     build:

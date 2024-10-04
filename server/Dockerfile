@@ -6,5 +6,5 @@ COPY --chown=bun:bun . .
 RUN bun install
 
 USER bun:bun
-EXPOSE 3000/tcp
+EXPOSE 3001/tcp
 ENTRYPOINT [ "bun", "run", "src/index.ts" ]
