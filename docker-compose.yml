@@ -5,7 +5,7 @@ services:
       context: ./server
       dockerfile: Dockerfile
     ports:
-      - 3000:3000
+      - 3001:3001 # expose to host for debugging only
     environment:
       - DB_HOST=db
       - DB_PORT=5432
@@ -19,7 +19,7 @@ services:
     image: postgres
     restart: always
     ports:
-      - 5432:5432 # expose for external host connections
+      - 5432:5432 # expose to host for debugging only
     volumes:
       - ./server/sql/:/var/lib/postgresql/data
       - ./server/src/db/init.sql:/docker-entrypoint-initdb.d/init.sql # ./server/init.sql will run first

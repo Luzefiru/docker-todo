@@ -2,8 +2,11 @@ import { Hono } from 'hono';
 import { db } from './db';
 import { todos } from './db/schema';
 import { eq } from 'drizzle-orm';
+import { cors } from 'hono/cors';
 
 const app = new Hono();
+
+app.use(cors());
 
 app.get('/', (c) => {
   return c.text('Hello Hono!');
@@ -56,4 +59,7 @@ app.onError((_, c) => {
   );
 });
 
-export default app;
+export default {
+  port: 3001,
+  fetch: app.fetch,
+};
